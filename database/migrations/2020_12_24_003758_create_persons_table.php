@@ -14,8 +14,8 @@ class CreatePersonsTable extends Migration
     public function up()
     {
         Schema::create('persons', function (Blueprint $table) {
-            $table->id();
-            $table->string('personname');
+            $table->increments('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
