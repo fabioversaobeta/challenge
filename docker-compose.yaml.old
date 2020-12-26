@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  laravel-app:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/share/nginx
+    networks:
+      - app-network
+
+  mysql-app:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    # volumes:
+    #   - .docker/dbdata:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    networks:
+      - app-network
+
+  redis-app:
+    image: 'redis:alpine'
+    ports:
+      - '${FORWARD_REDIS_PORT:-6379}:6379'
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+# docker-compose up -d --build
+# docker exec -it  challenge_laravel-app_1 bash
+# docker-compose down
+# ln -s public html
+
