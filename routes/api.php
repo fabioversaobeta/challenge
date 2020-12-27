@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\PhonesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/import', [ImportController::class, 'index']);
+
+Route::get('/getPeople', [PeopleController::class, 'index']);
+
+Route::get('/getPhones', [PhonesController::class, 'index']);
