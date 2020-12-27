@@ -14,11 +14,11 @@ class IdentifyFileService
      */
     public function identifyFile($xmlArray)
     {
-        if ($xmlArray['person']) {
+        if (isset($xmlArray['person'])) {
             return "people";
         }
 
-        if ($xmlArray['shiporder']) {
+        if (isset($xmlArray['shiporder'])) {
             return "shiporders";
         }
 

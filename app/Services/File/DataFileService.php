@@ -16,7 +16,11 @@ class DataFileService
 
         $index = array_key_first($array);
 
-        $data = $array[$index];
+        if (!isset($array[$index])) {
+            return $array;
+        }
+
+        $data = (array) $array[$index];
 
         return $data;
     }
