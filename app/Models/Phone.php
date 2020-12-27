@@ -10,7 +10,7 @@ class Phone extends Model
 {
     use HasFactory;
 
-    protected $table = 'phone';
+    protected $table = 'phones';
 
     public $fillable = [
         'person_id',
