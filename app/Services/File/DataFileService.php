@@ -12,7 +12,11 @@ class DataFileService
      */
     public function dataFile($xmlName)
     {
-        $array = \XML::import($xmlName)->toArray();
+        try {
+            $array = \XML::import($xmlName)->toArray();
+        } catch (Exception $e) {
+            return false;
+        }
 
         $index = array_key_first($array);
 

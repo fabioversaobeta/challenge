@@ -31,6 +31,9 @@ class ImportController extends Controller
          */
         $data = $this->dataFileService->dataFile($req->file('file'));
 
+        if (!$data) {
+            return $this->responseJson(['error' => 'invalid xml'], 400);
+        }
 
         /**
          * indentify if is people of shiporders file
