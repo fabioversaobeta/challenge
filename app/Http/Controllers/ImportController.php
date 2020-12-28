@@ -7,18 +7,21 @@ use Illuminate\Support\Facades\Validator;
 use App\Services\File\DataFileService;
 use App\Services\File\IdentifyFileService;
 use App\Services\People\ImportPeopleService;
+use App\Services\ShipOrders\ImportShipOrderService;
 
 class ImportController extends Controller
 {
     public function __construct(
         DataFileService $dataFileService,
         IdentifyFileService $identifyFileService,
-        ImportPeopleService $importPeopleService
+        ImportPeopleService $importPeopleService,
+        ImportShipOrderService $importShipOrderService
     )
     {
         $this->dataFileService = $dataFileService;
         $this->identifyFileService = $identifyFileService;
         $this->importPeopleService = $importPeopleService;
+        $this->importShipOrderService = $importShipOrderService;
     }
 
     public function index(Request $req)
@@ -43,30 +46,9 @@ class ImportController extends Controller
         // import data
         switch ($identify) {
             case 'people':
-
                 /**
-                 * validate rules
+                 * validate data
                  */
-                // $validator = Validator::make($data, [
-                //     'person.personid' => 'required|numeric',
-                //     'person.personname' => 'required|string',
-                // ], $messages = [
-                //     'required' => 'The :attribute field is required.',
-                //     'numeric' => 'The :attribute field has be numeric.',
-                //     'string' => 'The :attribute field has be string.'
-                // ]);
-
-                // if ($validator->fails()) {
-                //     return  $this->responseJson(
-                //         [
-                //             'error' => 'not is valid',
-                //             'errors' => $validator->errors(),
-                //             'validator' => $validator,
-                //             'data' => $data
-                //         ],
-                //         400
-                //     );
-                // }
 
                 /**
                  * import data
@@ -75,7 +57,14 @@ class ImportController extends Controller
 
                 break;
             case 'shiporders':
-                $dados = 'shiporders';
+                /**
+                 * validate data
+                 */
+
+                /**
+                 * import data
+                 */
+                $dados = $this->importShipOrderService->importShipOrder($data);
                 break;
             default:
                 # code...
