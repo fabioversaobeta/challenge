@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Config;
 class DataFileService
 {
     /**
-     * Identify if file is of PEOPLE or SHIPORDERS
+     * get file xml to convert in array
      */
     public function dataFile($xmlName)
     {

@@ -58,8 +58,6 @@ class ImportPeopleService
             $people[] = $person;
         }
 
-        return [
-            $people
-        ];
+        return $people;
     }
 }
