@@ -13,7 +13,6 @@ class Item extends Model
 
     public $fillable = [
         'title',
-        'note',
-        'price'
+        'note'
     ];
 }

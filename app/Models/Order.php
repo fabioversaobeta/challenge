@@ -29,11 +29,16 @@ class Order extends Model
 
     public function items()
     {
-        return $this->belongsToMany(
-            Item::class,
-            'order_items',
-            'order_id',
-            'item_id'
-        );
+        // return $this->belongsToMany(
+        //     Item::class,
+        //     'order_items',
+        //     'order_id',
+        //     'item_id'
+        // );
+
+        return $this->belongsToMany(Item::class)->withPivot([
+            'quantity',
+            'price'
+        ]);
     }
 }

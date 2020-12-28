@@ -2,16 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Address extends Model implements CastsAttributes
+class Address extends Model
 {
-    use HasFactory;
-
     protected $table = 'addresses';
 
     public $fillable = [
+        'name',
         'address',
         'city',
         'country'
