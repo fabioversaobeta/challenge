@@ -17,7 +17,6 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('note');
-            $table->float('price');
             $table->timestamps();
         });
     }
